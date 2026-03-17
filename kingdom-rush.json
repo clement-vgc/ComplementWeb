@@ -1,0 +1,81 @@
+"tower_types": [
+    { "id": 1, "name": "Archer", "description": "Attaques rapides à distance.", "color": "#76ba1b" },
+    { "id": 2, "name": "Infanterie", "description": "Troupes au sol pour bloquer les ennemis.", "color": "#4a90e2" },
+    { "id": 3, "name": "Mage", "description": "Dégâts magiques ignorant l'armure.", "color": "#9b59b6" },
+    { "id": 4, "name": "Artillerie", "description": "Dégâts de zone explosifs.", "color": "#e67e22" }
+  ],
+
+  "towers": [
+    {
+      "id": 1,
+      "typeId": 1,
+      "name": "Marksmen Tower",
+      "level": 3,
+      "damage": "10-16",
+      "range": "Long",
+      "image": "marksmen_tower.png",
+      "description": "Des archers d'élite avec une précision mortelle.",
+      "rating": 4
+    },
+    {
+      "id": 2,
+      "typeId": 1,
+      "name": "Ranger Hideout",
+      "level": 4,
+      "damage": "13-19",
+      "range": "Very Long",
+      "image": "ranger_hideout.png",
+      "description": "Le niveau ultime des archers sylvains.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "typeId": 2,
+      "name": "Paladins et Knights",
+      "level": 4,
+      "damage": "12-18",
+      "health": 500,
+      "image": "paladins.png",
+      "description": "Guerriers lourdement armés avec une armure élevée.",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "typeId": 3,
+      "name": "Arcane Wizard",
+      "level": 4,
+      "damage": "44-78",
+      "range": "Long",
+      "image": "arcane_wizard.png",
+      "description": "Maître des arts arcaniques et de la téléportation.",
+      "rating": 4
+    },
+    {
+      "id": 5,
+      "typeId": 4,
+      "name": "Big Bertha",
+      "level": 4,
+      "damage": "40-80",
+      "range": "Great",
+      "image": "big_bertha.png",
+      "description": "Le plus gros canon du royaume.",
+      "rating": 5
+    }
+  ],
+
+  "special_skills": [
+    { "id": 1, "name": "Arrow Rain", "description": "Pluie de flèches sur une large zone." },
+    { "id": 2, "name": "Poison Arrows", "description": "Dégâts sur la durée (DOT)." },
+    { "id": 3, "name": "Holy Strike", "description": "Attaque sacrée qui étourdit les ennemis." },
+    { "id": 4, "name": "Death Ray", "description": "Désintègre instantanément une cible." },
+    { "id": 5, "name": "Cluster Bomb", "description": "La bombe explose en plusieurs mini-bombes." }
+  ],
+
+  "tower_skills": [
+    { "id": 1, "towerId": 2, "skillId": 1 },
+    { "id": 2, "towerId": 2, "skillId": 2 },
+    { "id": 3, "towerId": 3, "skillId": 3 },
+    { "id": 4, "towerId": 4, "skillId": 4 },
+    { "id": 5, "towerId": 5, "skillId": 5 }
+  ]
+}
