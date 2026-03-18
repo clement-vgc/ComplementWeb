@@ -1,4 +1,5 @@
-"tower_types": [
+{
+  "tower_types": [
     { "id": 1, "name": "Archer", "description": "Attaques rapides à distance.", "color": "#76ba1b" },
     { "id": 2, "name": "Infanterie", "description": "Troupes au sol pour bloquer les ennemis.", "color": "#4a90e2" },
     { "id": 3, "name": "Mage", "description": "Dégâts magiques ignorant l'armure.", "color": "#9b59b6" },
