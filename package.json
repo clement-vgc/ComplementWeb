@@ -1,0 +1,13 @@
+{
+  "name": "complementweb-tpfinal",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "api": "json-server --watch data/kingdom-rush.json --port 3000",
+    "front": "python3 -m http.server 5500",
+    "dev": "npm run api & npm run front"
+  },
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
+}
