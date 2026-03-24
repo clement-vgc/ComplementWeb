@@ -50,6 +50,34 @@ class Api {
 	getTowerSkillsByTowerId(towerId) {
 		return this.request(`/tower_skills?towerId=${towerId}`);
 	}
+
+	getEnemies() {
+		return this.request("/enemies");
+	}
+
+	getEnemyById(id) {
+		return this.request(`/enemies/${id}`);
+	}
+
+	getBosses() {
+		return this.request("/bosses");
+	}
+
+	getBossById(id) {
+		return this.request(`/bosses/${id}`);
+	}
+
+	async getEnemiesAndBosses() {
+		const [enemies, bosses] = await Promise.all([
+			this.getEnemies(),
+			this.getBosses()
+		]);
+
+		return {
+			enemies,
+			bosses
+		};
+	}
 }
 
 export const api = new Api();
