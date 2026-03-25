@@ -17,14 +17,16 @@ export default class TowersView {
             const towers = Tower.listFromApi(rawTowers, relations);
 
             let html = `
-                <h2>Arsenal des Tours</h2>
-                <div class="towers-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+                <section class="page page-towers">
+                    <h2>Arsenal des Tours</h2>
+                    <p class="section-subtitle">Toutes les tours avec leurs statistiques principales.</p>
+                    <div class="towers-container">
             `;
 
             towers.forEach(tower => {
                 html += `
-                    <div class="tower-card" style="border: 2px solid ${tower.typeColor}; padding: 15px; border-radius: 8px; width: 300px;">
-                        <h3 style="color: ${tower.typeColor}; margin-top: 0;">${tower.name} (Lvl ${tower.level})</h3>
+                    <article class="tower-card" style="--tower-color: ${tower.typeColor};">
+                        <h3 class="tower-title">${tower.name} <span>(Lvl ${tower.level})</span></h3>
                         <p><strong>Type :</strong> ${tower.typeName}</p>
                         <p><strong>Dégâts :</strong> ${tower.damageLabel}</p>
                         <p><strong>Vitesse d'attaque :</strong> ${tower.attackSpeed}</p>
@@ -35,19 +37,22 @@ export default class TowersView {
                         ${tower.hasSkills ? `
                             <hr>
                             <h4>Compétences :</h4>
-                            <ul style="padding-left: 20px; font-size: 0.9em;">
+                            <ul class="skills-list">
                                 ${tower.skills.map(skill => `
                                     <li><strong>${skill.name}:</strong> ${skill.description}</li>
                                 `).join('')}
                             </ul>
                         ` : ''}
                         
-                        <button class="fav-btn" data-id="${tower.id}">⭐ Favoris</button>
-                    </div>
+                        <button class="fav-btn" data-id="${tower.id}" type="button">Ajouter aux favoris</button>
+                    </article>
                 `;
             });
 
-            html += `</div>`;
+            html += `
+                    </div>
+                </section>
+            `;
             return html;
 
         } catch (error) {
