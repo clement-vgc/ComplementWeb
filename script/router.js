@@ -1,8 +1,7 @@
-
-class HomeView { render() { return "<h2>Accueil</h2><p>Bienvenue dans l'encyclopédie Kingdom Rush !</p>"; } }
-class TowersView { render() { return "<h2>Arsenal des Tours</h2><p>La liste des tours apparaîtra ici.</p>"; } }
-class EnemiesView { render() { return "<h2>Bestiaire</h2><p>Les ennemis apparaîtront ici.</p>"; } }
-class FavoritesView { render() { return "<h2>Mon Build</h2><p>Tes tours favorites seront ici.</p>"; } }
+import HomeView from "./views/HomeView.js";
+import TowersView from "./views/TowersView.js";
+import EnemiesView from "./views/EnemiesView.js";
+import FavoritesView from "./views/FavoritesView.js";
 
 const routes = [
     { path: "/", view: HomeView },
@@ -11,7 +10,7 @@ const routes = [
     { path: "/favorites", view: FavoritesView }
 ];
 
-export const router = () => {
+export const router = async () => { 
     const currentPath = window.location.pathname;
 
     let match = routes.find(route => route.path === currentPath);
@@ -22,7 +21,7 @@ export const router = () => {
 
     const view = new match.view();
 
-    document.querySelector("#app").innerHTML = view.render();
+    document.querySelector("#app").innerHTML = await view.render(); 
 };
 
 export const navigateTo = (url) => {
