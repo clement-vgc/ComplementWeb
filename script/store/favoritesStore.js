@@ -1,56 +1,64 @@
-const STORAGE_KEY = "favoriteTowerIds";
+const TOWERS_KEY = "favoriteTowerIds";
+const ENEMIES_KEY = "favoriteEnemyIds";
 
-function readFavorites() {
+function readFavorites(key) {
     try {
-        const rawValue = localStorage.getItem(STORAGE_KEY);
+        const rawValue = localStorage.getItem(key);
         const parsed = JSON.parse(rawValue || "[]");
-
-        if (!Array.isArray(parsed)) {
-            return [];
-        }
-
-        return parsed
-            .map(value => Number(value))
-            .filter(value => Number.isInteger(value));
+        return Array.isArray(parsed) ? parsed.map(Number).filter(Number.isInteger) : [];
     } catch (_) {
         return [];
     }
 }
 
-function saveFavorites(ids) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
+function saveFavorites(key, ids) {
+    localStorage.setItem(key, JSON.stringify(ids));
 }
 
-export function getFavoriteTowerIds() {
-    return readFavorites();
-}
+// --- GESTION DES TOURS ---
+export const getFavoriteTowerIds = () => readFavorites(TOWERS_KEY);
+export const isFavoriteTower = (id) => getFavoriteTowerIds().includes(Number(id));
 
-export function isFavoriteTower(towerId) {
-    return readFavorites().includes(Number(towerId));
-}
-
-export function addFavoriteTower(towerId) {
+export const removeFavoriteTower = (towerId) => {
     const id = Number(towerId);
-    const ids = readFavorites();
+    let ids = getFavoriteTowerIds().filter(val => val !== id);
+    saveFavorites(TOWERS_KEY, ids);
+};
 
-    if (!ids.includes(id)) {
-        ids.push(id);
-        saveFavorites(ids);
-    }
-}
-
-export function removeFavoriteTower(towerId) {
+export const toggleFavoriteTower = (towerId) => {
     const id = Number(towerId);
-    const ids = readFavorites().filter(value => value !== id);
-    saveFavorites(ids);
-}
-
-export function toggleFavoriteTower(towerId) {
-    if (isFavoriteTower(towerId)) {
-        removeFavoriteTower(towerId);
+    let ids = getFavoriteTowerIds();
+    
+    if (ids.includes(id)) {
+        removeFavoriteTower(id);
         return false;
+    } else {
+        ids.push(id);
+        saveFavorites(TOWERS_KEY, ids);
+        return true;
     }
+};
 
-    addFavoriteTower(towerId);
-    return true;
-}
+// --- GESTION DES ENNEMIS ---
+export const getFavoriteEnemyIds = () => readFavorites(ENEMIES_KEY);
+export const isFavoriteEnemy = (id) => getFavoriteEnemyIds().includes(Number(id));
+
+export const removeFavoriteEnemy = (enemyId) => {
+    const id = Number(enemyId);
+    let ids = getFavoriteEnemyIds().filter(val => val !== id);
+    saveFavorites(ENEMIES_KEY, ids);
+};
+
+export const toggleFavoriteEnemy = (enemyId) => {
+    const id = Number(enemyId);
+    let ids = getFavoriteEnemyIds();
+    
+    if (ids.includes(id)) {
+        removeFavoriteEnemy(id);
+        return false;
+    } else {
+        ids.push(id);
+        saveFavorites(ENEMIES_KEY, ids);
+        return true;
+    }
+};

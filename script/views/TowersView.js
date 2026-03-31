@@ -1,4 +1,3 @@
-
 import { api } from '../api/api.js';
 import { Tower } from '../models/Tower.js';
 import { isFavoriteTower } from '../store/favoritesStore.js';
@@ -14,7 +13,6 @@ export default class TowersView {
             ]);
 
             const relations = Tower.buildRelations({ towerTypes, specialSkills, towerSkills });
-
             const towers = Tower.listFromApi(rawTowers, relations);
 
             let html = `
@@ -50,7 +48,7 @@ export default class TowersView {
                             </ul>
                         ` : ''}
                         
-                        <button class="fav-btn ${isFavorite ? 'is-favorite' : ''}" data-id="${tower.id}" type="button">
+                        <button class="fav-btn ${isFavorite ? 'is-favorite' : ''}" data-type="tower" data-id="${tower.id}" type="button">
                             ${isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
                         </button>
                     </article>
