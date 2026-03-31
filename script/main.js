@@ -11,6 +11,15 @@ window.addEventListener("popstate", router);
 document.addEventListener("DOMContentLoaded", () => {
 
     document.body.addEventListener("click", e => {
+        const link = e.target.closest("[data-link]");
+
+        if (link) {
+            e.preventDefault();
+            const href = link.getAttribute("href");
+            navigateTo(href);
+            return;
+        }
+
         const favoriteButton = e.target.closest(".fav-btn");
 
         if (favoriteButton) {
@@ -43,11 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? "Retirer des favoris"
                 : "Ajouter aux favoris";
             return;
-        }
-
-        if (e.target.matches("[data-link]")) {
-            e.preventDefault();
-            navigateTo(e.target.href);
         }
     });
 
