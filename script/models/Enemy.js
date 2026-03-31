@@ -13,9 +13,12 @@ class Enemy {
         this.livesTaken = rawEnemy.livesTaken ?? 1;
         this.bounty = rawEnemy.bounty ?? rawEnemy.gold ?? 0;
         this.description = rawEnemy.description || "";
+        
         this.image = rawEnemy.image || null;
+        this.imageBig = rawEnemy.imageBig || null;
 
-        this.imagePath = Enemy.buildImagePath(this.category, this.image);
+        this.imagePath = Enemy.buildImagePath(this.category, this.image, false);
+        this.imageBigPath = Enemy.buildImagePath(this.category, this.imageBig, true);
     }
 
     get hpByDifficulty() {
@@ -32,10 +35,13 @@ class Enemy {
         return rawEnemies.map(rawEnemy => Enemy.fromApi(rawEnemy, options));
     }
 
-    static buildImagePath(category, imageName) {
+    static buildImagePath(category, imageName, isBig = false) {
         if (!imageName) return null;
-        const folder = category === "boss" ? "bosses/small" : "ennemies/small";
-        return `/images/${folder}/${imageName}`;
+        
+        const typeFolder = category === "boss" ? "bosses" : "ennemies";
+        const sizeFolder = isBig ? "big" : "small";
+        
+        return `/images/${typeFolder}/${sizeFolder}/${imageName}`;
     }
 }
 

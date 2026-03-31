@@ -14,7 +14,7 @@ export default class EnemiesView {
                     <h2>Bestiaire</h2>
                     <p class="section-subtitle">Apprenez à connaître vos adversaires pour mieux les écraser.</p>
 
-                    <h3 class="fav-section-title">Ennemis de base</h3>
+                    <h3 class="fav-section-title">👹 Ennemis de base</h3>
                     <div class="towers-container"> `;
 
             enemies.forEach(enemy => {
@@ -24,7 +24,7 @@ export default class EnemiesView {
             html += `
                     </div>
 
-                    <h3 class="fav-section-title" style="margin-top: 40px; color: #d32f2f;">Boss Légendaires</h3>
+                    <h3 class="fav-section-title" style="margin-top: 40px; color: #d32f2f;">💀 Boss Légendaires</h3>
                     <div class="towers-container">
             `;
 
@@ -41,7 +41,7 @@ export default class EnemiesView {
 
         } catch (error) {
             console.error(error);
-            return `<p>Erreur lors du chargement du bestiaire. L'API tourne-t-elle ?</p>`;
+            return `<p>Erreur lors du chargement du bestiaire.</p>`;
         }
     }
 
@@ -50,14 +50,18 @@ export default class EnemiesView {
         const titleStyle = type === "boss" ? "color: #d32f2f;" : "color: var(--accent);";
 
         return `
-            <article class="tower-card" style="${borderStyle} display: flex; flex-direction: column; align-items: center; text-align: center;">
-                ${enemy.imagePath ? `<img class="tower-image" src="${enemy.imagePath}" alt="${enemy.name}" style="max-width: 100px; height: auto; border: none; background: transparent; box-shadow: none;">` : ''}
+            <article class="tower-card" style="${borderStyle} display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: space-between;">
+                <div>
+                    ${enemy.imagePath ? `<img class="tower-image" src="${enemy.imagePath}" alt="${enemy.name}" style="max-width: 100px; height: auto; border: none; background: transparent; box-shadow: none;">` : ''}
+                    
+                    <h3 style="${titleStyle} margin-top: 10px;">${enemy.name}</h3>
+                    
+                    <p style="font-size: 0.9em; color: var(--muted); margin-bottom: 20px;">
+                        <em>${enemy.description}</em>
+                    </p>
+                </div>
                 
-                <h3 style="${titleStyle} margin-top: 10px;">${enemy.name}</h3>
-                
-                <p style="font-size: 0.9em; color: var(--muted); margin-bottom: 0;">
-                    <em>${enemy.description}</em>
-                </p>
+                <a href="/${type}/${enemy.id}" class="voir-detail-btn" data-link>Voir les détails</a>
             </article>
         `;
     }
