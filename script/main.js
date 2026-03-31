@@ -1,6 +1,10 @@
-
 import { router, navigateTo } from './router.js';
-import { toggleFavoriteTower, removeFavoriteTower } from './store/favoritesStore.js';
+import { 
+    toggleFavoriteTower, 
+    removeFavoriteTower, 
+    toggleFavoriteEnemy, 
+    removeFavoriteEnemy 
+} from './store/favoritesStore.js';
 
 window.addEventListener("popstate", router);
 
@@ -10,14 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const favoriteButton = e.target.closest(".fav-btn");
 
         if (favoriteButton) {
-            const towerId = Number(favoriteButton.dataset.id);
+            const itemId = Number(favoriteButton.dataset.id);
+            const itemType = favoriteButton.dataset.type;
 
-            if (!Number.isInteger(towerId)) {
+            if (!Number.isInteger(itemId) || !itemType) {
                 return;
             }
 
             if (favoriteButton.classList.contains("remove-fav-btn")) {
-                removeFavoriteTower(towerId);
+                if (itemType === "tower") removeFavoriteTower(itemId);
+                if (itemType === "enemy") removeFavoriteEnemy(itemId);
 
                 if (window.location.pathname === "/favorites") {
                     router();
@@ -25,7 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const nowFavorite = toggleFavoriteTower(towerId);
+            let nowFavorite = false;
+            if (itemType === "tower") {
+                nowFavorite = toggleFavoriteTower(itemId);
+            } else if (itemType === "enemy") {
+                nowFavorite = toggleFavoriteEnemy(itemId);
+            }
+
             favoriteButton.classList.toggle("is-favorite", nowFavorite);
             favoriteButton.textContent = nowFavorite
                 ? "Retirer des favoris"

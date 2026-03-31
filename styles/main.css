@@ -199,3 +199,10 @@ h2 {
         padding: 20px 14px 28px;
     }
 }
+
+
+.favorites-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
