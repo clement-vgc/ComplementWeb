@@ -1,6 +1,7 @@
 
 import { api } from '../api/api.js';
 import { Tower } from '../models/Tower.js';
+import { isFavoriteTower } from '../store/favoritesStore.js';
 
 export default class TowersView {
     async render() {
@@ -24,8 +25,13 @@ export default class TowersView {
             `;
 
             towers.forEach(tower => {
+                const isFavorite = isFavoriteTower(tower.id);
+
                 html += `
                     <article class="tower-card" style="--tower-color: ${tower.typeColor};">
+                        ${tower.imagePath ? `
+                            <img class="tower-image" src="${tower.imagePath}" alt="${tower.name}">
+                        ` : ''}
                         <h3 class="tower-title">${tower.name} <span>(Lvl ${tower.level})</span></h3>
                         <p><strong>Type :</strong> ${tower.typeName}</p>
                         <p><strong>Dégâts :</strong> ${tower.damageLabel}</p>
@@ -44,7 +50,9 @@ export default class TowersView {
                             </ul>
                         ` : ''}
                         
-                        <button class="fav-btn" data-id="${tower.id}" type="button">Ajouter aux favoris</button>
+                        <button class="fav-btn ${isFavorite ? 'is-favorite' : ''}" data-id="${tower.id}" type="button">
+                            ${isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+                        </button>
                     </article>
                 `;
             });

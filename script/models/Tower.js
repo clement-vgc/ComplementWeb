@@ -86,7 +86,7 @@ class Tower {
         };
 
         const folder = folderByTypeId[typeId] || "archer";
-        return `images/towers/${folder}/${imageName}`;
+        return `/images/towers/${folder}/${imageName}`;
     }
 }
 
