@@ -27,11 +27,12 @@ export default class TowersView {
 
                 html += `
                     <article class="tower-card" style="--tower-color: ${tower.typeColor};">
-                        ${tower.imagePath ? `
-                            <img class="tower-image" src="${tower.imagePath}" alt="${tower.name}">
-                        ` : ''}
+                        ${tower.imagePath ? `<img class="tower-image" src="${tower.imagePath}" alt="${tower.name}">` : ''}
                         <h3 class="tower-title">${tower.name} <span>(Lvl ${tower.level})</span></h3>
                         <p><strong>Type :</strong> ${tower.typeName}</p>
+                        
+                        <p style="font-size: 0.9em; color: var(--muted); margin-top: -10px; margin-bottom: 15px;"><em>${tower.typeDescription}</em></p>
+                        
                         <p><strong>Dégâts :</strong> ${tower.damageLabel}</p>
                         <p><strong>Vitesse d'attaque :</strong> ${tower.attackSpeed}</p>
                         
@@ -42,9 +43,7 @@ export default class TowersView {
                             <hr>
                             <h4>Compétences :</h4>
                             <ul class="skills-list">
-                                ${tower.skills.map(skill => `
-                                    <li><strong>${skill.name}:</strong> ${skill.description}</li>
-                                `).join('')}
+                                ${tower.skills.map(skill => `<li><strong>${skill.name}:</strong> ${skill.description}</li>`).join('')}
                             </ul>
                         ` : ''}
                         
@@ -55,15 +54,12 @@ export default class TowersView {
                 `;
             });
 
-            html += `
-                    </div>
-                </section>
-            `;
+            html += `</div></section>`;
             return html;
 
         } catch (error) {
             console.error(error);
-            return `<p>Erreur lors du chargement des tours. L'API est-elle bien lancée ?</p>`;
+            return `<p>Erreur lors du chargement des tours.</p>`;
         }
     }
 }

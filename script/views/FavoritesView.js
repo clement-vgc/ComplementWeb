@@ -13,7 +13,10 @@ export default class FavoritesView {
                 return `
                     <section class="page page-favorites">
                         <h2>Mon Build</h2>
-                        <p>Aucun favori pour le moment. Ajoutez des tours ou des ennemis depuis l'Arsenal ou le Bestiaire.</p>
+                        <article class="placeholder-card">
+                            <h3>Aucun favori pour le moment</h3>
+                            <p>Ajoutez des tours ou des ennemis depuis l'Arsenal ou le Bestiaire.</p>
+                        </article>
                     </section>
                 `;
             }
@@ -28,22 +31,40 @@ export default class FavoritesView {
 
             let html = `<section class="page page-favorites"><h2>Mon Build</h2>`;
 
-            // --- AFFICHAGE DES TOURS ---
+            // --- ZONE TOURS ---
             if (favTowersIds.length > 0) {
                 const relations = Tower.buildRelations({ towerTypes, specialSkills, towerSkills });
-                
                 const favoriteTowers = Tower.listFromApi(rawTowers, relations)
                     .filter(tower => isFavoriteTower(tower.id));
 
                 if (favoriteTowers.length > 0) {
-                    html += `<h3 class="fav-section-title">Mes Tours</h3><div class="towers-container">`;
+                    html += `<h3 class="fav-section-title">Mes Tours</h3>`;
+                    html += `<div class="favorites-container" style="margin-bottom: 40px;">`; 
+                    
                     favoriteTowers.forEach(tower => {
                         html += `
                             <article class="tower-card" style="--tower-color: ${tower.typeColor};">
                                 ${tower.imagePath ? `<img class="tower-image" src="${tower.imagePath}" alt="${tower.name}">` : ''}
-                                <h3 class="tower-title">${tower.name}</h3>
+                                <h3 class="tower-title">${tower.name} <span>(Lvl ${tower.level})</span></h3>
+                                <p><strong>Type :</strong> ${tower.typeName}</p>
+                                
+                                <p style="font-size: 0.9em; color: var(--muted); margin-top: -10px; margin-bottom: 15px;"><em>${tower.typeDescription}</em></p>
+                                
                                 <p><strong>Dégâts :</strong> ${tower.damageLabel}</p>
-                                <button class="fav-btn remove-fav-btn" data-type="tower" data-id="${tower.id}">Retirer</button>
+                                <p><strong>Vitesse d'attaque :</strong> ${tower.attackSpeed}</p>
+                                
+                                ${tower.range ? `<p><strong>Portée :</strong> ${tower.rangeLabel}</p>` : ''}
+                                ${tower.health ? `<p><strong>PV :</strong> ${tower.health} | <strong>Armure :</strong> ${tower.armor}</p>` : ''}
+                                
+                                ${tower.hasSkills ? `
+                                    <hr>
+                                    <h4>Compétences :</h4>
+                                    <ul class="skills-list">
+                                        ${tower.skills.map(skill => `<li><strong>${skill.name}:</strong> ${skill.description}</li>`).join('')}
+                                    </ul>
+                                ` : ''}
+                                
+                                <button class="fav-btn remove-fav-btn" data-type="tower" data-id="${tower.id}">Retirer des favoris</button>
                             </article>
                         `;
                     });
@@ -51,20 +72,29 @@ export default class FavoritesView {
                 }
             }
 
-            // --- AFFICHAGE DES ENNEMIS ---
+            // --- ZONE ENNEMIS ---
             if (favEnemiesIds.length > 0) {
-                
                 const favoriteEnemies = Enemy.listFromApi(rawEnemies)
                     .filter(enemy => isFavoriteEnemy(enemy.id));
 
                 if (favoriteEnemies.length > 0) {
-                    html += `<h3 class="fav-section-title">Mes Ennemis</h3><div class="enemies-container">`;
+                    html += `<h3 class="fav-section-title">Mes Ennemis</h3>`;
+                    html += `<div class="favorites-container">`; 
+                    
                     favoriteEnemies.forEach(enemy => {
                         html += `
-                            <article class="enemy-card">
-                                <h3 class="enemy-title">${enemy.name}</h3>
-                                <p>${enemy.description}</p>
-                                <button class="fav-btn remove-fav-btn" data-type="enemy" data-id="${enemy.id}">Retirer</button>
+                            <article class="enemy-card placeholder-card" style="border-left: 6px solid #d32f2f;">
+                                <h3 class="enemy-title" style="color: #d32f2f;">${enemy.name}</h3>
+                                
+                                <p style="font-size: 0.9em; color: var(--muted); margin-bottom: 15px;"><em>${enemy.description}</em></p>
+                                
+                                <p><strong>Points de vie :</strong> ${enemy.health}</p>
+                                <p><strong>Dégâts :</strong> ${enemy.damage}</p>
+                                <p><strong>Vitesse :</strong> ${enemy.speed}</p>
+                                <p><strong>Armure :</strong> ${enemy.armor} | <strong>Résistance magique :</strong> ${enemy.magicResistance}</p>
+                                <p><strong>Prime :</strong> ${enemy.bounty} or | <strong>Vies prises :</strong> ${enemy.livesTaken}</p>
+                                
+                                <button class="fav-btn remove-fav-btn" data-type="enemy" data-id="${enemy.id}">Retirer des favoris</button>
                             </article>
                         `;
                     });
@@ -76,8 +106,8 @@ export default class FavoritesView {
             return html;
 
         } catch (error) {
-            console.error("Erreur dans FavoritesView:", error);
-            return `<p>Une erreur est survenue lors du chargement de vos favoris.</p>`;
+            console.error(error);
+            return `<p>Erreur lors du chargement des favoris.</p>`;
         }
     }
 }

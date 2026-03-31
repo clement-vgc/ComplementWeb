@@ -1,7 +1,8 @@
 class Tower {
     constructor(rawTower, relations = {}) {
-        this.id = rawTower.id;
-        this.typeId = rawTower.typeId;
+        this.id = Number(rawTower.id);
+        this.typeId = Number(rawTower.typeId);
+        
         this.level = rawTower.level;
         this.name = rawTower.name;
         this.damage = rawTower.damage;
@@ -17,10 +18,12 @@ class Tower {
         const skillsByTowerId = relations.skillsByTowerId || new Map();
 
         this.type = typeById.get(this.typeId) || null;
+        
         this.typeName = this.type ? this.type.name : "Type inconnu";
         this.typeColor = this.type ? this.type.color : "#999999";
+        this.typeDescription = this.type ? this.type.description : "";
+        
         this.imagePath = Tower.buildImagePath(this.typeId, this.image);
-
         this.skills = skillsByTowerId.get(this.id) || [];
     }
 
@@ -28,7 +31,6 @@ class Tower {
         if (Array.isArray(this.damage) && this.damage.length === 2) {
             return `${this.damage[0]}-${this.damage[1]}`;
         }
-
         return String(this.damage ?? "-");
     }
 
@@ -45,28 +47,22 @@ class Tower {
     }
 
     static buildRelations({ towerTypes = [], specialSkills = [], towerSkills = [] } = {}) {
-        const typeById = new Map(towerTypes.map(type => [type.id, type]));
-        const skillById = new Map(specialSkills.map(skill => [skill.id, skill]));
+        const typeById = new Map(towerTypes.map(type => [Number(type.id), type]));
+        const skillById = new Map(specialSkills.map(skill => [Number(skill.id), skill]));
         const skillsByTowerId = new Map();
 
         for (const link of towerSkills) {
-            const skill = skillById.get(link.skillId);
+            const skill = skillById.get(Number(link.skillId));
+            if (!skill) continue;
 
-            if (!skill) {
-                continue;
+            const tId = Number(link.towerId);
+            if (!skillsByTowerId.has(tId)) {
+                skillsByTowerId.set(tId, []);
             }
-
-            if (!skillsByTowerId.has(link.towerId)) {
-                skillsByTowerId.set(link.towerId, []);
-            }
-
-            skillsByTowerId.get(link.towerId).push(skill);
+            skillsByTowerId.get(tId).push(skill);
         }
 
-        return {
-            typeById,
-            skillsByTowerId
-        };
+        return { typeById, skillsByTowerId };
     }
 
     static listFromApi(rawTowers = [], relations = {}) {
@@ -74,9 +70,7 @@ class Tower {
     }
 
     static buildImagePath(typeId, imageName) {
-        if (!imageName) {
-            return null;
-        }
+        if (!imageName) return null;
 
         const folderByTypeId = {
             1: "archer",
