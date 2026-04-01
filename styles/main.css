@@ -485,6 +485,7 @@ h2 {
     .tower-detail-card {
         grid-template-columns: 1fr;
     }
+}
 
 @keyframes fade-in {
     from {
