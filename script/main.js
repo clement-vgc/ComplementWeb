@@ -12,10 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.body.addEventListener("click", e => {
         
-        const linkTarget = e.target.closest("[data-link]");
-        if (linkTarget) {
+        const link = e.target.closest("[data-link]");
+        if (link) {
             e.preventDefault();
-            navigateTo(linkTarget.href);
+            const href = link.getAttribute("href");
+            navigateTo(href);
             return;
         }
 

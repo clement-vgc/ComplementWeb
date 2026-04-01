@@ -31,21 +31,13 @@ export default class TowersView {
                         <h3 class="tower-title">${tower.name} <span>(Lvl ${tower.level})</span></h3>
                         <p><strong>Type :</strong> ${tower.typeName}</p>
                         
-                        <p style="font-size: 0.9em; color: var(--muted); margin-top: -10px; margin-bottom: 15px;"><em>${tower.typeDescription}</em></p>
-                        
                         <p><strong>Dégâts :</strong> ${tower.damageLabel}</p>
                         <p><strong>Vitesse d'attaque :</strong> ${tower.attackSpeed}</p>
                         
                         ${tower.range ? `<p><strong>Portée :</strong> ${tower.rangeLabel}</p>` : ''}
                         ${tower.health ? `<p><strong>PV :</strong> ${tower.health} | <strong>Armure :</strong> ${tower.armor}</p>` : ''}
                         
-                        ${tower.hasSkills ? `
-                            <hr>
-                            <h4>Compétences :</h4>
-                            <ul class="skills-list">
-                                ${tower.skills.map(skill => `<li><strong>${skill.name}:</strong> ${skill.description}</li>`).join('')}
-                            </ul>
-                        ` : ''}
+                        <a href="/tower/${tower.id}" class="voir-detail-btn" data-link>Voir détail</a>
                         
                         <button class="fav-btn ${isFavorite ? 'is-favorite' : ''}" data-type="tower" data-id="${tower.id}" type="button">
                             ${isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
