@@ -1,64 +1,53 @@
-const TOWERS_KEY = "favoriteTowerIds";
-const ENEMIES_KEY = "favoriteEnemyIds";
+const STORAGE_KEY_TOWERS = "kb_fav_towers";
+const STORAGE_KEY_ENEMIES = "kb_fav_enemies";
+const STORAGE_KEY_BOSSES = "kb_fav_bosses"; // Nouvelle clé
 
-function readFavorites(key) {
-    try {
-        const rawValue = localStorage.getItem(key);
-        const parsed = JSON.parse(rawValue || "[]");
-        return Array.isArray(parsed) ? parsed.map(Number).filter(Number.isInteger) : [];
-    } catch (_) {
-        return [];
-    }
-}
+const getFavs = (key) => JSON.parse(localStorage.getItem(key)) || [];
+const saveFavs = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
-function saveFavorites(key, ids) {
-    localStorage.setItem(key, JSON.stringify(ids));
-}
-
-// --- GESTION DES TOURS ---
-export const getFavoriteTowerIds = () => readFavorites(TOWERS_KEY);
+// --- TOWERS ---
+export const getFavoriteTowerIds = () => getFavs(STORAGE_KEY_TOWERS);
 export const isFavoriteTower = (id) => getFavoriteTowerIds().includes(Number(id));
-
-export const removeFavoriteTower = (towerId) => {
-    const id = Number(towerId);
-    let ids = getFavoriteTowerIds().filter(val => val !== id);
-    saveFavorites(TOWERS_KEY, ids);
+export const toggleFavoriteTower = (id) => {
+    const favs = getFavoriteTowerIds();
+    const index = favs.indexOf(Number(id));
+    if (index === -1) favs.push(Number(id));
+    else favs.splice(index, 1);
+    saveFavs(STORAGE_KEY_TOWERS, favs);
+    return index === -1;
+};
+export const removeFavoriteTower = (id) => {
+    const favs = getFavoriteTowerIds().filter(favId => favId !== Number(id));
+    saveFavs(STORAGE_KEY_TOWERS, favs);
 };
 
-export const toggleFavoriteTower = (towerId) => {
-    const id = Number(towerId);
-    let ids = getFavoriteTowerIds();
-    
-    if (ids.includes(id)) {
-        removeFavoriteTower(id);
-        return false;
-    } else {
-        ids.push(id);
-        saveFavorites(TOWERS_KEY, ids);
-        return true;
-    }
-};
-
-// --- GESTION DES ENNEMIS ---
-export const getFavoriteEnemyIds = () => readFavorites(ENEMIES_KEY);
+// --- ENEMIES ---
+export const getFavoriteEnemyIds = () => getFavs(STORAGE_KEY_ENEMIES);
 export const isFavoriteEnemy = (id) => getFavoriteEnemyIds().includes(Number(id));
-
-export const removeFavoriteEnemy = (enemyId) => {
-    const id = Number(enemyId);
-    let ids = getFavoriteEnemyIds().filter(val => val !== id);
-    saveFavorites(ENEMIES_KEY, ids);
+export const toggleFavoriteEnemy = (id) => {
+    const favs = getFavoriteEnemyIds();
+    const index = favs.indexOf(Number(id));
+    if (index === -1) favs.push(Number(id));
+    else favs.splice(index, 1);
+    saveFavs(STORAGE_KEY_ENEMIES, favs);
+    return index === -1;
+};
+export const removeFavoriteEnemy = (id) => {
+    const favs = getFavoriteEnemyIds().filter(favId => favId !== Number(id));
+    saveFavs(STORAGE_KEY_ENEMIES, favs);
 };
 
-export const toggleFavoriteEnemy = (enemyId) => {
-    const id = Number(enemyId);
-    let ids = getFavoriteEnemyIds();
-    
-    if (ids.includes(id)) {
-        removeFavoriteEnemy(id);
-        return false;
-    } else {
-        ids.push(id);
-        saveFavorites(ENEMIES_KEY, ids);
-        return true;
-    }
+export const getFavoriteBossIds = () => getFavs(STORAGE_KEY_BOSSES);
+export const isFavoriteBoss = (id) => getFavoriteBossIds().includes(Number(id));
+export const toggleFavoriteBoss = (id) => {
+    const favs = getFavoriteBossIds();
+    const index = favs.indexOf(Number(id));
+    if (index === -1) favs.push(Number(id));
+    else favs.splice(index, 1);
+    saveFavs(STORAGE_KEY_BOSSES, favs);
+    return index === -1;
+};
+export const removeFavoriteBoss = (id) => {
+    const favs = getFavoriteBossIds().filter(favId => favId !== Number(id));
+    saveFavs(STORAGE_KEY_BOSSES, favs);
 };

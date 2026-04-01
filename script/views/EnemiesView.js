@@ -1,5 +1,6 @@
 import { api } from '../api/api.js';
 import { Enemy } from '../models/Enemy.js';
+import { isFavoriteEnemy, isFavoriteBoss } from '../store/favoritesStore.js';
 
 export default class EnemiesView {
     async render() {
@@ -41,27 +42,31 @@ export default class EnemiesView {
 
         } catch (error) {
             console.error(error);
-            return `<p>Erreur lors du chargement du bestiaire.</p>`;
+            return `<p>Erreur lors du chargement du bestiaire. L'API tourne-t-elle ?</p>`;
         }
     }
 
     _renderEnemyCard(enemy, type) {
         const borderStyle = type === "boss" ? "border: 2px solid #d32f2f;" : "";
         const titleStyle = type === "boss" ? "color: #d32f2f;" : "color: var(--accent);";
+        
+        const isFavorite = type === "boss" ? isFavoriteBoss(enemy.id) : isFavoriteEnemy(enemy.id);
 
         return `
             <article class="tower-card" style="${borderStyle} display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: space-between;">
                 <div>
                     ${enemy.imagePath ? `<img class="tower-image" src="${enemy.imagePath}" alt="${enemy.name}" style="max-width: 100px; height: auto; border: none; background: transparent; box-shadow: none;">` : ''}
-                    
                     <h3 style="${titleStyle} margin-top: 10px;">${enemy.name}</h3>
-                    
-                    <p style="font-size: 0.9em; color: var(--muted); margin-bottom: 20px;">
-                        <em>${enemy.description}</em>
-                    </p>
+                    <p style="font-size: 0.9em; color: var(--muted); margin-bottom: 20px;"><em>${enemy.description}</em></p>
                 </div>
                 
-                <a href="/${type}/${enemy.id}" class="voir-detail-btn" data-link>Voir les détails</a>
+                <div style="width: 100%; display: flex; flex-direction: column; gap: 8px;">
+                    <a href="/${type}/${enemy.id}" class="voir-detail-btn" data-link>Voir les détails</a>
+                    <button class="fav-btn ${isFavorite ? 'is-favorite' : ''}" 
+                            data-type="${type}" data-id="${enemy.id}"> 
+                        ${isFavorite ? 'Retirer' : 'Ajouter'}
+                    </button>
+                </div>
             </article>
         `;
     }
