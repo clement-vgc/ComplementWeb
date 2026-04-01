@@ -74,6 +74,15 @@ export default class EnemyDetailView {
                                     <span>${enemy.bounty}</span>
                                 </div>
                             </div>
+                            
+                            ${enemy.abilities && enemy.abilities.length > 0 ? `
+                                <hr>
+                                <h3>Capacités spéciales</h3>
+                                <ul class="skills-list" style="margin-bottom: 20px; color: ${colorTheme};">
+                                    ${enemy.abilities.map(ability => `<li><strong>${ability}</strong></li>`).join('')}
+                                </ul>
+                            ` : ''}
+
                         </div>
                     </article>
                 </section>
@@ -81,7 +90,7 @@ export default class EnemyDetailView {
 
         } catch (error) {
             console.error(error);
-            return `<p>Erreur lors du chargement des détails.</p>`;
+            return `<p>Erreur lors du chargement des détails de la créature.</p>`;
         }
     }
 }

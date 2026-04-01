@@ -14,9 +14,10 @@ class Enemy {
         this.bounty = rawEnemy.bounty ?? rawEnemy.gold ?? 0;
         this.description = rawEnemy.description || "";
         
+        this.abilities = rawEnemy.abilities || [];
+
         this.image = rawEnemy.image || null;
         this.imageBig = rawEnemy.imageBig || null;
-
         this.imagePath = Enemy.buildImagePath(this.category, this.image, false);
         this.imageBigPath = Enemy.buildImagePath(this.category, this.imageBig, true);
     }
@@ -37,10 +38,8 @@ class Enemy {
 
     static buildImagePath(category, imageName, isBig = false) {
         if (!imageName) return null;
-        
-        const typeFolder = category === "boss" ? "bosses" : "ennemies";
+        const typeFolder = category === "boss" ? "bosses" : "ennemies"; 
         const sizeFolder = isBig ? "big" : "small";
-        
         return `/images/${typeFolder}/${sizeFolder}/${imageName}`;
     }
 }
