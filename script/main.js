@@ -11,8 +11,8 @@ window.addEventListener("popstate", router);
 document.addEventListener("DOMContentLoaded", () => {
 
     document.body.addEventListener("click", e => {
+        
         const link = e.target.closest("[data-link]");
-
         if (link) {
             e.preventDefault();
             const href = link.getAttribute("href");
@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const favoriteButton = e.target.closest(".fav-btn");
-
         if (favoriteButton) {
             const itemId = Number(favoriteButton.dataset.id);
             const itemType = favoriteButton.dataset.type;
