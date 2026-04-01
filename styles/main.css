@@ -313,6 +313,18 @@ h2 {
     padding: 16px;
 }
 
+.skill-image {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background: #eef4f7;
+    border: 1px solid var(--border);
+    padding: 6px;
+}
+
 .skill-card h4 {
     margin-top: 0;
     margin-bottom: 8px;
