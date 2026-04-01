@@ -4,7 +4,6 @@ import { Enemy } from '../models/Enemy.js';
 export default class EnemyDetailView {
     constructor(enemyId) {
         this.enemyId = Number(enemyId);
-        // On regarde l'URL actuelle pour savoir s'il faut chercher un boss
         this.isBossRoute = window.location.pathname.startsWith('/boss');
     }
 
@@ -17,7 +16,6 @@ export default class EnemyDetailView {
             
             let enemy;
 
-            // On cherche au bon endroit ! Fini le conflit d'ID !
             if (this.isBossRoute) {
                 enemy = bosses.find(b => b.id === this.enemyId);
             } else {
@@ -69,11 +67,11 @@ export default class EnemyDetailView {
                                 </div>
                                 <div class="stat-item">
                                     <strong>Vies perdues</strong>
-                                    <span>${enemy.livesTaken} ❤️</span>
+                                    <span>${enemy.livesTaken}</span>
                                 </div>
                                 <div class="stat-item">
                                     <strong>Récompense</strong>
-                                    <span>${enemy.bounty} 💰</span>
+                                    <span>${enemy.bounty}</span>
                                 </div>
                             </div>
                         </div>

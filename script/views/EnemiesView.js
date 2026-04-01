@@ -14,7 +14,7 @@ export default class EnemiesView {
                     <h2>Bestiaire</h2>
                     <p class="section-subtitle">Apprenez à connaître vos adversaires pour mieux les écraser.</p>
 
-                    <h3 class="fav-section-title">👹 Ennemis de base</h3>
+                    <h3 class="fav-section-title">Ennemis de base</h3>
                     <div class="towers-container"> `;
 
             enemies.forEach(enemy => {
@@ -24,7 +24,7 @@ export default class EnemiesView {
             html += `
                     </div>
 
-                    <h3 class="fav-section-title" style="margin-top: 40px; color: #d32f2f;">💀 Boss Légendaires</h3>
+                    <h3 class="fav-section-title" style="margin-top: 40px; color: #d32f2f;">Boss Légendaires</h3>
                     <div class="towers-container">
             `;
 
