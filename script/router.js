@@ -2,6 +2,7 @@ import HomeView from "./views/HomeView.js";
 import TowersView from "./views/TowersView.js";
 import EnemiesView from "./views/EnemiesView.js";
 import FavoritesView from "./views/FavoritesView.js";
+import EnemyDetailView from "./views/EnemyDetailView.js";
 import TowerDetailView from "./views/TowerDetailView.js";
 
 const routes = [
@@ -9,6 +10,8 @@ const routes = [
     { path: "/towers", view: TowersView },
     { path: "/tower/:id", view: TowerDetailView },
     { path: "/enemies", view: EnemiesView },
+    { path: "/enemy/:id", view: EnemyDetailView },
+    { path: "/boss/:id", view: EnemyDetailView },
     { path: "/favorites", view: FavoritesView }
 ];
 
