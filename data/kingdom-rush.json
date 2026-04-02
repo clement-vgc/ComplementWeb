@@ -1,0 +1,107 @@
+{
+  "tower_types": [
+    { "id": 1, "name": "Archer", "description": "Attaques physiques rapides, idéales contre les cibles sans armure et volantes.", "color": "#76ba1b" },
+    { "id": 2, "name": "Caserne", "description": "Génère des soldats pour bloquer les ennemis et créer des goulots d'étranglement.", "color": "#4a90e2" },
+    { "id": 3, "name": "Mage", "description": "Dégâts magiques ignorant l'armure physique, parfaits contre les ennemis blindés.", "color": "#9b59b6" },
+    { "id": 4, "name": "Artillerie", "description": "Dégâts de zone explosifs (ignorant 50% de l'armure), parfaits contre les hordes.", "color": "#e67e22" }
+  ],
+
+  "towers": [
+    { "id": 1, "typeId": 1, "level": 1, "name": "Archer Tower", "damage": [4, 6], "attackSpeed": "0.8s", "range": 280, "cost": 70, "image": "archer_lvl1.png" },
+    { "id": 2, "typeId": 1, "level": 2, "name": "Marksmen Tower", "damage": [7, 11], "attackSpeed": "0.6s", "range": 320, "cost": 110, "image": "archer_lvl2.png" },
+    { "id": 3, "typeId": 1, "level": 3, "name": "Sharpshooter Tower", "damage": [10, 16], "attackSpeed": "0.5s", "range": 360, "cost": 160, "image": "archer_lvl3.png" },
+    { "id": 4, "typeId": 1, "level": 4, "name": "Rangers Hideout", "damage": [13, 19], "attackSpeed": "0.4s", "range": 400, "cost": 230, "image": "archer_jungle.png" },
+    { "id": 5, "typeId": 1, "level": 4, "name": "Musketeer Garrison", "damage": [35, 65], "attackSpeed": "1.5s", "range": 470, "cost": 230, "image": "archer_mousquetaire.png" },
+
+    { "id": 6, "typeId": 2, "level": 1, "name": "Militia Barracks", "damage": [1, 3], "attackSpeed": "1.0s", "health": 50, "armor": "None", "respawn": "10s", "cost": 70, "image": "barracks_lvl1.png" },
+    { "id": 7, "typeId": 2, "level": 2, "name": "Footmen Barracks", "damage": [3, 4], "attackSpeed": "1.0s", "health": 100, "armor": "15%", "respawn": "10s", "cost": 110, "image": "barracks_lvl2.png" },
+    { "id": 8, "typeId": 2, "level": 3, "name": "Knights Barracks", "damage": [6, 10], "attackSpeed": "1.0s", "health": 150, "armor": "30%", "respawn": "10s", "cost": 160, "image": "barracks_lvl3.png" },
+    { "id": 9, "typeId": 2, "level": 4, "name": "Holy Order", "damage": [12, 18], "attackSpeed": "1.47s", "health": 200, "armor": "50%", "respawn": "14s", "cost": 230, "image": "barracks_paladins.png" },
+    { "id": 10, "typeId": 2, "level": 4, "name": "Barbarian Mead Hall", "damage": [16, 24], "attackSpeed": "1.37s", "health": 250, "armor": "None", "respawn": "10s", "cost": 230, "image": "barracks_barbarian.png" },
+
+    { "id": 11, "typeId": 3, "level": 1, "name": "Mage Tower", "damage": [9, 17], "attackSpeed": "1.5s", "range": 280, "cost": 100, "image": "mage_lvl1.png" },
+    { "id": 12, "typeId": 3, "level": 2, "name": "Adept Tower", "damage": [22, 42], "attackSpeed": "1.5s", "range": 320, "cost": 160, "image": "mage_lvl2.png" },
+    { "id": 13, "typeId": 3, "level": 3, "name": "Wizard Tower", "damage": [40, 74], "attackSpeed": "1.5s", "range": 360, "cost": 240, "image": "mage_lvl3.png" },
+    { "id": 14, "typeId": 3, "level": 4, "name": "Arcane Wizard", "damage": [76, 140], "attackSpeed": "2.0s", "range": 400, "cost": 300, "image": "mage_arcane.png" },
+    { "id": 15, "typeId": 3, "level": 4, "name": "Sorcerer Mage", "damage": [42, 78], "attackSpeed": "1.5s", "range": 400, "cost": 300, "image": "mage_sorcerer.png" },
+
+    { "id": 16, "typeId": 4, "level": 1, "name": "Dwarven Bombard", "damage": [8, 15], "attackSpeed": "3.0s", "range": 320, "cost": 125, "image": "dwarven_lvl1.png" },
+    { "id": 17, "typeId": 4, "level": 2, "name": "Dwarven Artillery", "damage": [20, 40], "attackSpeed": "3.0s", "range": 320, "cost": 220, "image": "dwarven_lvl2.png" },
+    { "id": 18, "typeId": 4, "level": 3, "name": "Dwarven Howitzer", "damage": [30, 60], "attackSpeed": "3.0s", "range": 360, "cost": 320, "image": "dwarven_lvl3.png" },
+    { "id": 19, "typeId": 4, "level": 4, "name": "500mm Big Bertha", "damage": [50, 100], "attackSpeed": "3.5s", "range": 360, "cost": 400, "image": "dwarven_big.png" },
+    { "id": 20, "typeId": 4, "level": 4, "name": "Tesla x104", "damage": [60, 110], "attackSpeed": "2.2s", "range": 320, "cost": 375, "image": "dwarven_tesla.png" }
+  ],
+
+  "special_skills": [
+    { "id": 1, "name": "Poison Arrows", "description": "Dégâts bruts sur la durée." },
+    { "id": 2, "name": "Wrath of the Forest", "description": "Des racines immobilisent et blessent les ennemis." },
+    { "id": 3, "name": "Sniper Shot", "description": "Chance de tuer instantanément la cible." },
+    { "id": 4, "name": "Shrapnel Shot", "description": "Tir de zone infligeant des dégâts massifs." },
+    { "id": 5, "name": "Healing Light", "description": "Soigne les Paladins alliés proches." },
+    { "id": 6, "name": "Holy Strike", "description": "Frappe divine infligeant des dégâts de zone." },
+    { "id": 7, "name": "Shield of Valor", "description": "Augmente l'armure des Paladins de 15%." },
+    { "id": 8, "name": "Throwing Axes", "description": "Permet aux Barbares d'attaquer à distance." },
+    { "id": 9, "name": "Whirlwind Attack", "description": "Attaque circulaire touchant tous les ennemis proches." },
+    { "id": 10, "name": "More Axes", "description": "Les Barbares obtiennent une hache supplémentaire." },
+    { "id": 11, "name": "Death Ray", "description": "Désintègre complètement n'importe quel ennemi (sauf boss)." },
+    { "id": 12, "name": "Teleport", "description": "Renvoie un groupe d'ennemis en arrière sur le chemin." },
+    { "id": 13, "name": "Polymorph", "description": "Transforme un ennemi en un mouton inoffensif." },
+    { "id": 14, "name": "Summon Elemental", "description": "Invoque un Golem de pierre pour bloquer le chemin." },
+    { "id": 15, "name": "Dragonbreath", "description": "Missile à tête chercheuse dévastateur." },
+    { "id": 16, "name": "Cluster Launcher", "description": "Lance une bombe qui se fragmente en mini-bombes." },
+    { "id": 17, "name": "Supercharged Bolt", "description": "L'éclair rebondit sur un plus grand nombre d'ennemis." },
+    { "id": 18, "name": "Overcharge", "description": "Génère un champ électrique statique blessant les ennemis proches." }
+  ],
+
+  "tower_skills": [
+    { "id": 1, "towerId": 4, "skillId": 1 }, { "id": 2, "towerId": 4, "skillId": 2 },
+    { "id": 3, "towerId": 5, "skillId": 3 }, { "id": 4, "towerId": 5, "skillId": 4 },
+    { "id": 5, "towerId": 9, "skillId": 5 }, { "id": 6, "towerId": 9, "skillId": 6 }, { "id": 7, "towerId": 9, "skillId": 7 },
+    { "id": 8, "towerId": 10, "skillId": 8 }, { "id": 9, "towerId": 10, "skillId": 9 }, { "id": 10, "towerId": 10, "skillId": 10 },
+    { "id": 11, "towerId": 14, "skillId": 11 }, { "id": 12, "towerId": 14, "skillId": 12 },
+    { "id": 13, "towerId": 15, "skillId": 13 }, { "id": 14, "towerId": 15, "skillId": 14 },
+    { "id": 15, "towerId": 19, "skillId": 15 }, { "id": 16, "towerId": 19, "skillId": 16 },
+    { "id": 17, "towerId": 20, "skillId": 17 }, { "id": 18, "towerId": 20, "skillId": 18 }
+  ],
+
+  "enemies": [
+    { "id": 1, "name": "Goblin", "description": "Ennemi basique. Faible et moyennement rapide, attaque en grand nombre.", "hp": "20", "damage": "1-4", "attackRate": "1.0s", "armor": "None", "magicResistance": "None", "speed": "Fast (1.2)", "livesTaken": 1, "bounty": 3, "image": "MiniBox_Goblin.webp", "imageBig": "Pedia_mob_Goblin.webp", "abilities": [] },
+    { "id": 2, "name": "Orc", "description": "Guerrier sauvage avec une armure légère, plus résistant que le Gobelin.", "hp": "80", "damage": "4-8", "attackRate": "1.5s", "armor": "Low (20%)", "magicResistance": "None", "speed": "Slow (0.6)", "livesTaken": 1, "bounty": 8, "image": "MiniBox_Orc.webp", "imageBig": "Pedia_mob_Orc.webp", "abilities": [] },
+    { "id": 3, "name": "Shaman", "description": "Soigne les ennemis proches avec sa magie tribale.", "hp": "60", "damage": "5-15", "attackRate": "1.5s", "armor": "None", "magicResistance": "None", "speed": "Medium (0.8)", "livesTaken": 1, "bounty": 10, "image": "MiniBox_Shaman.webp", "imageBig": "Pedia_mob_Shaman.webp", "abilities": ["Soigne les alliés"] },
+    { "id": 4, "name": "Ogre", "description": "Une immense brute très lente, mais avec énormément de points de vie.", "hp": "800", "damage": "40-60", "attackRate": "2.0s", "armor": "None", "magicResistance": "None", "speed": "Slow (0.6)", "livesTaken": 3, "bounty": 50, "image": "MiniBox_Ogre.webp", "imageBig": "Pedia_mob_Ogre.webp", "abilities": [] },
+    { "id": 5, "name": "Bandit", "description": "Voleur rapide qui peut facilement esquiver les troupes de mêlée.", "hp": "70", "damage": "10-18", "attackRate": "1.0s", "armor": "None", "magicResistance": "None", "speed": "Fast (1.2)", "livesTaken": 1, "bounty": 10, "image": "MiniBox_Bandit.webp", "imageBig": "Pedia_mob_Bandit.webp", "abilities": ["Esquive les attaques de mêlée"] },
+    { "id": 6, "name": "Brigand", "description": "Version améliorée du Bandit avec une armure légère.", "hp": "160", "damage": "15-25", "attackRate": "1.2s", "armor": "Low (20%)", "magicResistance": "None", "speed": "Medium (0.8)", "livesTaken": 1, "bounty": 15, "image": "MiniBox_Brigand.webp", "imageBig": "Pedia_mob_Brigand.webp", "abilities": [] },
+    { "id": 7, "name": "Marauder", "description": "Guerrier redoutable du désert avec une bonne armure et beaucoup de santé.", "hp": "400", "damage": "20-40", "attackRate": "1.5s", "armor": "Medium (50%)", "magicResistance": "None", "speed": "Medium (0.8)", "livesTaken": 2, "bounty": 25, "image": "MiniBox_Marauder.webp", "imageBig": "Pedia_mob_Marauder.webp", "abilities": [] },
+    { "id": 8, "name": "Giant Spider", "description": "Araignée très rapide possédant une bonne résistance magique.", "hp": "60", "damage": "8-12", "attackRate": "1.0s", "armor": "None", "magicResistance": "Medium (50%)", "speed": "Fast (1.2)", "livesTaken": 1, "bounty": 8, "image": "MiniBox_GiantSpider.webp", "imageBig": "Pedia_mob_Giant_Spiders.webp", "abilities": [] },
+    { "id": 9, "name": "Spider Matriarch", "description": "Araignée géante qui pond des œufs générant des Spider Hatchlings en avançant.", "hp": "250", "damage": "15-25", "attackRate": "1.5s", "armor": "None", "magicResistance": "Medium (50%)", "speed": "Medium (0.8)", "livesTaken": 2, "bounty": 25, "image": "MiniBox_SpiderMatriach.webp", "imageBig": "Pedia_mob_Spider_Matriarch.webp", "abilities": ["Pond de jeunes araignées"] },
+    { "id": 10, "name": "Spider Hatchling", "description": "Minuscule araignée extrêmement rapide mais très fragile.", "hp": "15", "damage": "1-3", "attackRate": "1.0s", "armor": "None", "magicResistance": "None", "speed": "Fast (1.4)", "livesTaken": 1, "bounty": 2, "image": "MiniBox_SpiderHatch.PNG.webp", "imageBig": "EnemySqr_Spiderling.webp", "abilities": [] },
+    { "id": 11, "name": "Gargoyle", "description": "Créature volante basique ignorant les unités au sol.", "hp": "90", "damage": "None", "attackRate": "N/A", "armor": "None", "magicResistance": "None", "speed": "Flying (0.8)", "livesTaken": 1, "bounty": 10, "image": "MiniBox_Gargoyle.webp", "imageBig": "Pedia_mob_Gargoyle.webp", "abilities": ["Volant"] },
+    { "id": 12, "name": "Shadow Archer", "description": "Tire des flèches à distance sur les troupes de la caserne.", "hp": "160", "damage": "10-20", "attackRate": "1.0s", "armor": "None", "magicResistance": "None", "speed": "Medium (0.8)", "livesTaken": 1, "bounty": 15, "image": "MiniBox_ShadowArcher.webp", "imageBig": "Pedia_mob_Shadow_Archer.webp", "abilities": ["Attaque à distance"] },
+    { "id": 13, "name": "Dark Knight", "description": "Chevalier corrompu lourdement armé. Presque insensible aux dégâts physiques.", "hp": "300", "damage": "15-25", "attackRate": "1.2s", "armor": "High (80%)", "magicResistance": "None", "speed": "Slow (0.6)", "livesTaken": 1, "bounty": 15, "image": "MiniBox_DarkKnight.webp", "imageBig": "Pedia_mob_Dark_Knight.webp", "abilities": [] },
+    { "id": 14, "name": "Wulf", "description": "Loup féroce et très rapide capable de contourner les défenses.", "hp": "35", "damage": "3-8", "attackRate": "1.0s", "armor": "None", "magicResistance": "None", "speed": "Fast (1.4)", "livesTaken": 1, "bounty": 5, "image": "MiniBox_Wulf.webp", "imageBig": "Pedia_mob_Wulf.webp", "abilities": [] },
+    { "id": 15, "name": "Worg", "description": "Un loup massif, plus dangereux, plus rapide et plus résistant.", "hp": "100", "damage": "10-15", "attackRate": "1.0s", "armor": "None", "magicResistance": "None", "speed": "Fast (1.4)", "livesTaken": 1, "bounty": 10, "image": "MiniBox_Worg.webp", "imageBig": "Pedia_mob_Worg.webp", "abilities": [] },
+    { "id": 16, "name": "Golem Head", "description": "Tête de golem de pierre, insensible à la magie et lente.", "hp": "250", "damage": "10-20", "attackRate": "1.5s", "armor": "None", "magicResistance": "High (80%)", "speed": "Slow (0.6)", "livesTaken": 1, "bounty": 15, "image": "MiniBox_Golem-Head.webp", "imageBig": "Pedia_mob_Golem_Head.webp", "abilities": [] },
+    { "id": 18, "name": "Winter Wolf", "description": "Loup des montagnes glaciales, extrêmement rapide et coriace.", "hp": "150", "damage": "15-25", "attackRate": "1.0s", "armor": "None", "magicResistance": "None", "speed": "Fast (1.4)", "livesTaken": 1, "bounty": 15, "image": "MiniBox_WinterWulf.webp", "imageBig": "Pedia_mob_Winter_Wolf.webp", "abilities": [] },
+    { "id": 19, "name": "Troll", "description": "Monstre des neiges qui régénère continuellement sa santé.", "hp": "280", "damage": "10-20", "attackRate": "1.5s", "armor": "None", "magicResistance": "None", "speed": "Medium (0.8)", "livesTaken": 1, "bounty": 15, "image": "MiniBox_Troll.webp", "imageBig": "Pedia_mob_Troll.webp", "abilities": ["Régénère sa santé"] },
+    { "id": 20, "name": "Troll Champion", "description": "Troll massif avec une régénération de santé encore plus rapide.", "hp": "600", "damage": "30-50", "attackRate": "1.5s", "armor": "None", "magicResistance": "None", "speed": "Slow (0.6)", "livesTaken": 2, "bounty": 30, "image": "MiniBox_TrollChampion.webp", "imageBig": "Pedia_mob_Troll_Champion.webp", "abilities": ["Régénère sa santé"] },
+    { "id": 21, "name": "Troll Chieftain", "description": "Chef Troll capable d'enrager ses alliés pour augmenter leur vitesse.", "hp": "800", "damage": "40-60", "attackRate": "1.5s", "armor": "None", "magicResistance": "None", "speed": "Slow (0.6)", "livesTaken": 3, "bounty": 50, "image": "MiniBox_TrollChieftain.webp", "imageBig": "Pedia_mob_Troll_Chieftain.webp", "abilities": ["Régénère sa santé", "Enrage les alliés"] },
+    { "id": 22, "name": "Yeti", "description": "Créature des glaces redoutable qui frappe la terre pour paralyser les casernes.", "hp": "2000", "damage": "50-100", "attackRate": "2.0s", "armor": "None", "magicResistance": "None", "speed": "Slow (0.6)", "livesTaken": 5, "bounty": 100, "image": "MiniBox_Yeti.webp", "imageBig": "Pedia_mob_Yeti.webp", "abilities": ["Dégâts de zone", "Gèle les tours", "Mange les soldats"] },
+    { "id": 23, "name": "Rocket Rider", "description": "Gobelin chevauchant une fusée. Si sa fusée explose, il avance à pied.", "hp": "120", "damage": "5-15", "attackRate": "1.5s", "armor": "Low (20%)", "magicResistance": "None", "speed": "Fast (1.2)", "livesTaken": 1, "bounty": 15, "image": "MiniBox_RocketRider.webp", "imageBig": "Pedia_mob_Rocket_Rider.webp", "abilities": ["Volant", "Marche quand sa monture est détruite"] },
+    { "id": 24, "name": "Dark Slayer", "description": "Guerrier d'élite en armure lourde causant d'énormes dégâts au corps à corps.", "hp": "600", "damage": "30-50", "attackRate": "1.2s", "armor": "High (80%)", "magicResistance": "None", "speed": "Slow (0.6)", "livesTaken": 2, "bounty": 30, "image": "MiniBox_DarkSlayer.webp", "imageBig": "Pedia_mob_Dark_Slayer.webp", "abilities": [] },
+    { "id": 25, "name": "Demon Spawn", "description": "Créature infernale qui explose à sa mort, blessant les soldats proches.", "hp": "180", "damage": "10-20", "attackRate": "1.2s", "armor": "None", "magicResistance": "Low (20%)", "speed": "Medium (0.8)", "livesTaken": 1, "bounty": 15, "image": "MiniBox_Demon.webp", "imageBig": "EnemySqr_DemonSwapn.webp", "abilities": ["Explose à sa mort"] },
+    { "id": 26, "name": "Demon Lord", "description": "Démon puissant, génère un bouclier et invoque des Demon Imps.", "hp": "700", "damage": "30-50", "attackRate": "1.5s", "armor": "None", "magicResistance": "Low (20%)", "speed": "Slow (0.6)", "livesTaken": 2, "bounty": 40, "image": "MiniBox_DemonLord.webp", "imageBig": "EnemySqr_DemonLord.webp", "abilities": ["Bouclier infernal", "Invoque des Diablotins Démons"] },
+    { "id": 27, "name": "Demon Hound", "description": "Chien des enfers, court très vite tout en résistant à la magie.", "hp": "150", "damage": "15-25", "attackRate": "1.0s", "armor": "None", "magicResistance": "Medium (50%)", "speed": "Fast (1.4)", "livesTaken": 1, "bounty": 15, "image": "MiniBox_DemonHound.webp", "imageBig": "EnemySqr_DemonHound.webp", "abilities": [] },
+    { "id": 28, "name": "Demon Imp", "description": "Petit démon volant invoqué par les boss ou Demon Lords.", "hp": "60", "damage": "None", "attackRate": "N/A", "armor": "None", "magicResistance": "None", "speed": "Flying (0.8)", "livesTaken": 1, "bounty": 10, "image": "MiniBox_DemonImp.webp", "imageBig": "EnemySqr_DemonImp.webp", "abilities": ["Volant"] },
+    { "id": 29, "name": "Skeleton", "description": "Mort-vivant fragile souvent invoqué par d'autres créatures.", "hp": "40", "damage": "1-5", "attackRate": "1.0s", "armor": "None", "magicResistance": "None", "speed": "Medium (0.8)", "livesTaken": 1, "bounty": 3, "image": "MiniBox_Skeleton.webp", "imageBig": "EnemySqr_Skeleton.webp", "abilities": [] },
+    { "id": 30, "name": "Skeleton Knight", "description": "Squelette en armure. Se transforme en Squelette normal une fois vaincu.", "hp": "120", "damage": "10-15", "attackRate": "1.0s", "armor": "Medium (50%)", "magicResistance": "None", "speed": "Medium (0.8)", "livesTaken": 1, "bounty": 8, "image": "MiniBox_SkeletonKnight.webp", "imageBig": "EnemySqr_SkelKnight.webp", "abilities": ["Génère un squelette à sa mort"] },
+    { "id": 31, "name": "Necromancer", "description": "Mage mort-vivant attaquant à distance et invoquant des Squelettes.", "hp": "300", "damage": "10-20", "attackRate": "1.5s", "armor": "None", "magicResistance": "None", "speed": "Medium (0.8)", "livesTaken": 1, "bounty": 20, "image": "MiniBox_Necromancer.webp", "imageBig": "EnemySqr_Necro.PNG.webp", "abilities": ["Attaque à distance", "Invoque des squelettes"] },
+    { "id": 32, "name": "Magma Elemental", "description": "Colosse de lave extrêmement résistant. Il brûle les alliés au corps à corps.", "hp": "1500", "damage": "40-60", "attackRate": "2.0s", "armor": "None", "magicResistance": "None", "speed": "Slow (0.6)", "livesTaken": 3, "bounty": 60, "image": "MiniBox_MagmaElemental.webp", "imageBig": "EnemySqr_MagmaEl.webp", "abilities": ["Dégâts de zone"] }
+  ],
+
+  "bosses": [
+    { "id": 1, "name": "The Juggernaut", "description": "Machine de guerre géante et blindée construite par les Gobelins. Tire des missiles.", "hp": "10000", "damage": "50-100", "attackRate": "2.0s", "armor": "Medium (50%)", "magicResistance": "None", "speed": "Slow (0.5)", "livesTaken": 20, "bounty": 0, "image": "MiniBox_TheJuggernaut.webp", "imageBig": "EnemySqr_Jugg.webp", "abilities": ["Tire des missiles", "Invoque des ennemis"] },
+    { "id": 2, "name": "J.T.", "description": "Un colossal yéti capable de geler les tours avec son souffle glacial et d'invoquer des loups de glace.", "hp": "11000", "damage": "80-120", "attackRate": "2.0s", "armor": "None", "magicResistance": "None", "speed": "Slow (0.5)", "livesTaken": 20, "bounty": 0, "image": "MiniBox_JT.webp", "imageBig": "EnemySqr_JT.webp", "abilities": ["Gèle les tours", "Invoque des Loups d'hiver", "Mange les soldats"] },
+    { "id": 3, "name": "Vez'Nan", "description": "Le terrible Sorcier Noir. Il se téléporte, scelle les tours, et utilise une magie destructrice puissante.", "hp": "7000", "damage": "50-100", "attackRate": "1.5s", "armor": "None", "magicResistance": "Medium (50%)", "speed": "Slow (0.5)", "livesTaken": 20, "bounty": 0, "image": "MiniBox_Veznan.webp", "imageBig": "EnemySqr_Veznan.webp", "abilities": ["Se téléporte", "Bloque les tours", "Attaque magique", "Se transforme en Démon"] }
+  ]
+
+}
